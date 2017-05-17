@@ -70,6 +70,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 if valid {
                     let numberOfLetters: Int = word.characters.count
                     while (!validWordFound && tries <= 5) {
+                        tries += 1
                         //pick a random word from the list of all words returned by the search
                         let resultNum = Int(arc4random_uniform(UInt32(results.count)))
                         letter = results[resultNum]["word"] as! String
@@ -85,7 +86,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         
                         //limit to 5 tries, if the letter ultimately chosen is an actual letter, than great!
                         validWordFound = self.alphabetList.contains(letter)
-                        tries += 1
                     }
                     if tries < 6 {
                         self.nextText = letter
@@ -107,8 +107,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        self.label.text! += textField.text!
-        textField.text = ""
         dismissKeyboard()
         if searchOED(word: self.label.text!) {
             if nextText != "0" {
@@ -124,12 +122,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
+        dismissKeyboard()
         return false
     }
     
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        self.label.text! += field.text!
+        field.text = ""
         view.endEditing(true)
     }
     
