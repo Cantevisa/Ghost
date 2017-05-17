@@ -8,25 +8,21 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController {
 
     @IBOutlet weak var newGameButton: UIButton!
+    @IBOutlet weak var giveUp: UIButton!
     @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var field: UITextField!
-    var doneProcessing: Bool = false
+    var doneProcessing: Bool = true
     var nextText: String = ""
+    var lastWord = ""
     
     let alphabetList: [String] = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.label.text = ""
-        self.field.delegate = self
-        //Looks for single or multiple taps.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
         newGameButton.isHidden = true
-        
-        view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,9 +70,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         //pick a random word from the list of all words returned by the search
                         let resultNum = Int(arc4random_uniform(UInt32(results.count)))
                         letter = results[resultNum]["word"] as! String
+                        self.lastWord = letter
                         
                         //if the found word is shorter than the already existing word, then don't use it
-                        if letter.characters.count <= numberOfLetters {
+                        //also if it's a proper noun, then don't use it
+                        if letter.characters.count <= numberOfLetters || letter.lowercased() != letter {
                             continue
                         }
                         
@@ -103,39 +101,42 @@ class ViewController: UIViewController, UITextFieldDelegate {
         while !doneProcessing {
             //makes sure processing is finished before returning
         }
+        self.giveUp.isHidden = false
         return valid
-    }
-
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        dismissKeyboard()
-        if searchOED(word: self.label.text!) {
-            if nextText != "0" {
-                self.label.text! += nextText
-            } else {
-                self.label.text! = "I give up. You win!"
-                newGameButton.isHidden = false
-            }
-        } else {
-            self.label.text! = "\(self.label.text!) is not a valid word!"
-            newGameButton.isHidden = false
-        }
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        dismissKeyboard()
-        return false
-    }
-    
-    func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        self.label.text! += field.text!
-        field.text = ""
-        view.endEditing(true)
     }
     
     @IBAction func newGame(_ sender: UIButton) {
         sender.isHidden = true
         self.label.text = ""
-        self.field.text = ""
+        self.giveUp.isHidden = true
     }
+    
+    @IBAction func alphabetPressed(_ sender: UIButton) {
+        if doneProcessing {
+            self.label.text! += sender.currentTitle!
+            if searchOED(word: self.label.text!) {
+                if nextText != "0" {
+                    self.label.text! += nextText
+                } else {
+                    self.label.text! = "I give up. You win!"
+                    newGameButton.isHidden = false
+                }
+            } else {
+                self.label.text! = "\(self.label.text!) is not a valid word!"
+                newGameButton.isHidden = false
+                giveUp.isHidden = true
+            }
+        }
+    }
+    
+    @IBAction func forfeit(_ sender: UIButton) {
+        if self.lastWord != self.label.text {
+            self.label.text! = "I win... but you could have continued. My word would have been \(self.lastWord)."
+        } else {
+            self.label.text! = "I win! :)"
+        }
+        newGameButton.isHidden = false
+        sender.isHidden = true
+    }
+    
 }
