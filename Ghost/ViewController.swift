@@ -10,8 +10,10 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var newGameButton: UIButton!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var field: UITextField!
+    var doneProcessing: Bool = false
     var nextText: String = ""
     
     let alphabetList: [String] = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
@@ -22,6 +24,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.field.delegate = self
         //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
+        newGameButton.isHidden = true
         
         view.addGestureRecognizer(tap)
     }
@@ -32,7 +35,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     //This function can either check the dictionary validity of a word
-    func searchOED(word: String, validityCheck: Bool) -> Bool {
+    func searchOED(word: String) -> Bool {
         //MARK: Set up HTTP request
         let appId = "45c1b2ef"
         let appKey = "86b215c7b6624e2c00422c07b2145ab1"
@@ -49,6 +52,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         var letter: String = ""
         var validWordFound = false
         var tries = 0
+        self.doneProcessing = false
         
         //MARK: Actions
         let session = URLSession.shared
@@ -56,13 +60,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
             if let response = response,
                 let data = data,
             let jsonData = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
+                //turns results list into indexable dictionary of words
                 guard let results = jsonData?["results"] as? [[String: Any]] else {
                     // Handle error here
                     print ("error")
                     return
                 }
                 valid = results.count > 0
-                if !validityCheck {
+                if valid {
                     let numberOfLetters: Int = word.characters.count
                     while (!validWordFound && tries <= 5) {
                         //pick a random word from the list of all words returned by the search
@@ -83,27 +88,38 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         tries += 1
                     }
                     if tries < 6 {
-                        self.nextText = self.label.text! + letter
+                        self.nextText = letter
                         print ("Letter:", letter)
                     } else {
-                        self.nextText = "I give up! You win!"
+                        self.nextText = "0"
                     }
                 }
             } else {
                 print(error)
                 print(NSString.init(data: data!, encoding: String.Encoding.utf8.rawValue))
             }
+            self.doneProcessing = true
         }).resume()
+        while !doneProcessing {
+            //makes sure processing is finished before returning
+        }
         return valid
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.label.text! += textField.text!
+        textField.text = ""
         dismissKeyboard()
-        if searchOED(word: self.label.text!, validityCheck: false) {
-            self.label.text! += nextText
+        if searchOED(word: self.label.text!) {
+            if nextText != "0" {
+                self.label.text! += nextText
+            } else {
+                self.label.text! = "I give up. You win!"
+                newGameButton.isHidden = false
+            }
         } else {
-            self.label.text! = "That is not a valid word!"
+            self.label.text! = "\(self.label.text!) is not a valid word!"
+            newGameButton.isHidden = false
         }
     }
     
@@ -115,5 +131,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
+    }
+    
+    @IBAction func newGame(_ sender: UIButton) {
+        sender.isHidden = true
+        self.label.text = ""
+        self.field.text = ""
     }
 }
