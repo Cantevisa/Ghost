@@ -55,7 +55,7 @@ class Dictionary {
                         
                         //if the found word is shorter than the already existing word, then don't use it
                         //also if it's a proper noun, then don't use it
-                        if letter.characters.count <= numberOfLetters || letter.lowercased() != letter || letter.contains("-") || letter.contains(" ") {
+                        if letter.characters.count <= numberOfLetters || letter.lowercased() != letter || letter.contains("-") || letter.contains(" ") || letter.contains(".") {
                             continue
                         }
                         

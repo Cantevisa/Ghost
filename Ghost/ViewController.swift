@@ -36,6 +36,7 @@ class ViewController: UIViewController {
         self.label.text = "You Start."
         newGameButton.isHidden = true
         newGameButton.setTitle("Next Round", for: UIControlState.normal)
+        giveUp.isHidden = true
         unghostify()
     }
 
@@ -85,6 +86,7 @@ class ViewController: UIViewController {
                         button.isEnabled = false
                     }
                     addLetter(user: false)
+                    giveUp.isHidden = true
                 }
             } else {
                 self.label.text! = "\(self.label.text!) is not a valid word, but \(ViewController.lastWord) is."
@@ -116,12 +118,14 @@ class ViewController: UIViewController {
     }
     
     func addLetter (user: Bool) {
-        if userLetterNumber >= 4 {
+        if userLetterNumber >= 4 && user {
             newGameButton.setTitle("New Game", for: UIControlState.normal)
-            self.label.text = "I Win!!!!! You're a ghost!!!! Click \"New Game\" to start a new game."
-        } else if computerLetterNumber >= 4 {
+            self.label.text! += " Click \"New Game\" to start a new game."
+            userScore[4].isHidden = false
+        } else if computerLetterNumber >= 4 && !user {
             newGameButton.setTitle("New Game", for: UIControlState.normal)
             self.label.text = "You win. Apparently you can beat the OED at a word game."
+            computerScore[4].isHidden = false
         } else {
             if user {
                 userScore[userLetterNumber].isHidden = false
