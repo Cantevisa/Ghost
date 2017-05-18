@@ -14,6 +14,7 @@
 		4731E0D51EC9158F004717FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4731E0D31EC9158F004717FD /* LaunchScreen.storyboard */; };
 		4731E0E01EC9158F004717FD /* GhostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4731E0DF1EC9158F004717FD /* GhostTests.swift */; };
 		4731E0EB1EC9158F004717FD /* GhostUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4731E0EA1EC9158F004717FD /* GhostUITests.swift */; };
+		4744D0B41ECD1A380014AB9B /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4744D0B31ECD1A380014AB9B /* Dictionary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		4731E0E61EC9158F004717FD /* GhostUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GhostUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4731E0EA1EC9158F004717FD /* GhostUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostUITests.swift; sourceTree = "<group>"; };
 		4731E0EC1EC9158F004717FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4744D0B31ECD1A380014AB9B /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				4731E0CA1EC9158F004717FD /* AppDelegate.swift */,
 				4731E0CC1EC9158F004717FD /* ViewController.swift */,
+				4744D0B31ECD1A380014AB9B /* Dictionary.swift */,
 				4731E0CE1EC9158F004717FD /* Main.storyboard */,
 				4731E0D11EC9158F004717FD /* Assets.xcassets */,
 				4731E0D31EC9158F004717FD /* LaunchScreen.storyboard */,
@@ -264,6 +267,7 @@
 			files = (
 				4731E0CD1EC9158F004717FD /* ViewController.swift in Sources */,
 				4731E0CB1EC9158F004717FD /* AppDelegate.swift in Sources */,
+				4744D0B41ECD1A380014AB9B /* Dictionary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +520,7 @@
 				4731E0F11EC9158F004717FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4731E0F21EC9158F004717FD /* Build configuration list for PBXNativeTarget "GhostTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +529,7 @@
 				4731E0F41EC9158F004717FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4731E0F51EC9158F004717FD /* Build configuration list for PBXNativeTarget "GhostUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +538,7 @@
 				4731E0F71EC9158F004717FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
