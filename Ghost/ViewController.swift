@@ -16,6 +16,12 @@ class ViewController: UIViewController {
     @IBOutlet var letters: [UIButton]!
     let dictionary: Dictionary = Dictionary()
     
+    //MARK: Scorekeeping
+    @IBOutlet var userScore: [UILabel]!
+    @IBOutlet var computerScore: [UILabel]!
+    var userLetterNumber = 0
+    var computerLetterNumber = 0
+    
     //MARK: Static Variables
     //will be modified by the dictionary
     static var nextText: String = ""
@@ -26,8 +32,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.label.text = ""
+        self.label.text = "You Start."
         newGameButton.isHidden = true
+        for letter in userScore {
+            letter.isHidden = true
+        }
+        for letter in computerScore {
+            letter.isHidden = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,6 +58,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func alphabetPressed(_ sender: UIButton) {
+        if self.label.text!.contains(" ") {
+            self.label.text = ""
+        }
         if !alphabetRunning {
             alphabetRunning = true
             self.label.text! += sender.currentTitle!
@@ -59,6 +74,7 @@ class ViewController: UIViewController {
                     for button in letters {
                         button.isEnabled = false
                     }
+                    addLetter(user: false)
                 }
             } else {
                 self.label.text! = "\(self.label.text!) is not a valid word, but \(ViewController.lastWord) is."
@@ -67,6 +83,7 @@ class ViewController: UIViewController {
                 }
                 newGameButton.isHidden = false
                 giveUp.isHidden = true
+                addLetter(user: true)
             }
             alphabetRunning = false
         } else {
@@ -85,6 +102,17 @@ class ViewController: UIViewController {
         }
         newGameButton.isHidden = false
         sender.isHidden = true
+        addLetter(user: true)
+    }
+    
+    func addLetter (user: Bool) {
+        if user {
+            userScore[userLetterNumber].isHidden = false
+            userLetterNumber += 1
+        } else {
+            computerScore[computerLetterNumber].isHidden = false
+            computerLetterNumber += 1
+        }
     }
     
 }

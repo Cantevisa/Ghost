@@ -47,7 +47,7 @@ class Dictionary {
                 valid = results.count > 0
                 if valid {
                     let numberOfLetters: Int = word.characters.count
-                    while (!validWordFound && tries <= 5) {
+                    while (!validWordFound && tries <= results.count) {
                         tries += 1
                         //pick a random word from the list of all words returned by the search
                         let resultNum = Int(arc4random_uniform(UInt32(results.count)))
@@ -68,7 +68,7 @@ class Dictionary {
                         //limit to 5 tries, if the letter ultimately chosen is an actual letter, than great!
                         validWordFound = self.alphabetList.contains(letter)
                     }
-                    if tries < 6 {
+                    if tries < results.count + 1 {
                         ViewController.nextText = letter
                         print ("Letter:", letter)
                     } else {
