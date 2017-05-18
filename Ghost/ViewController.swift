@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     @IBOutlet var computerScore: [UILabel]!
     var userLetterNumber = 0
     var computerLetterNumber = 0
+    var userStarts = true
     
     //MARK: Static Variables
     //will be modified by the dictionary
@@ -34,12 +35,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.label.text = "You Start."
         newGameButton.isHidden = true
-        for letter in userScore {
-            letter.isHidden = true
-        }
-        for letter in computerScore {
-            letter.isHidden = true
-        }
+        newGameButton.setTitle("Next Round", for: UIControlState.normal)
+        unghostify()
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,6 +51,19 @@ class ViewController: UIViewController {
         self.giveUp.isHidden = true
         for button in letters {
             button.isEnabled = true
+        }
+        if sender.currentTitle == "New Game" {
+            userLetterNumber = 0
+            computerLetterNumber = 0
+            unghostify()
+            userStarts = true
+            sender.setTitle("Next Round", for: UIControlState.normal)
+        }
+        if userStarts {
+            self.label.text = "You Start."
+        } else {
+            let randomletter = dictionary.alphabetList[Int(arc4random_uniform(26))]
+            self.label.text = randomletter
         }
     }
     
@@ -106,12 +116,31 @@ class ViewController: UIViewController {
     }
     
     func addLetter (user: Bool) {
-        if user {
-            userScore[userLetterNumber].isHidden = false
-            userLetterNumber += 1
+        if userLetterNumber >= 4 {
+            newGameButton.setTitle("New Game", for: UIControlState.normal)
+            self.label.text = "I Win!!!!! You're a ghost!!!! Click \"New Game\" to start a new game."
+        } else if computerLetterNumber >= 4 {
+            newGameButton.setTitle("New Game", for: UIControlState.normal)
+            self.label.text = "You win. Apparently you can beat the OED at a word game."
         } else {
-            computerScore[computerLetterNumber].isHidden = false
-            computerLetterNumber += 1
+            if user {
+                userScore[userLetterNumber].isHidden = false
+                userLetterNumber += 1
+                userStarts = false
+            } else {
+                computerScore[computerLetterNumber].isHidden = false
+                computerLetterNumber += 1
+                userStarts = true
+            }
+        }
+    }
+    
+    func unghostify() {
+        for letter in userScore {
+            letter.isHidden = true
+        }
+        for letter in computerScore {
+            letter.isHidden = true
         }
     }
     
