@@ -131,7 +131,11 @@ class ViewController: UIViewController {
             userScore[4].isHidden = false
         } else if computerLetterNumber >= 4 && !user {
             newGameButton.setTitle("New Game", for: UIControlState.normal)
-            self.label.text = "You win. Apparently you can beat the OED at a word game."
+            if smart {
+                self.label.text = "You win. Apparently you can beat the OED at a word game."
+            } else {
+                self.label.text = "You win, but to be fair, you forced me to be dumb."
+            }
             computerScore[4].isHidden = false
         } else {
             if user {

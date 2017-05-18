@@ -47,9 +47,12 @@ class Dictionary {
                 valid = results.count > 0
                 if valid {
                     let numberOfLetters: Int = word.characters.count
-                    var numResults = results.count
-                    if !smart && numResults > 10 {
-                        numResults = 10
+                    var numResults: Int = results.count
+                    if !smart && numResults > 1 {
+                        numResults /= 2
+                        if numResults > 10 {
+                            numResults = 10
+                        }
                     }
                     while (!validWordFound && tries <= numResults) {
                         tries += 1
@@ -76,12 +79,14 @@ class Dictionary {
                         //limit to 5 tries, if the letter ultimately chosen is an actual letter, than great!
                         validWordFound = self.alphabetList.contains(letter)
                     }
-                    if tries < results.count + 1 {
+                    if tries < numResults + 1 {
                         ViewController.nextText = letter
                         print ("Letter:", letter)
                     } else {
                         ViewController.nextText = "0"
                     }
+                } else {
+                    ViewController.nextText = "0"
                 }
             } else {
                 print(error)
