@@ -47,7 +47,11 @@ class Dictionary {
                 valid = results.count > 0
                 if valid {
                     let numberOfLetters: Int = word.characters.count
-                    while (!validWordFound && tries <= results.count) {
+                    var numResults = results.count
+                    if !smart && numResults > 10 {
+                        numResults = 10
+                    }
+                    while (!validWordFound && tries <= numResults) {
                         tries += 1
                         //pick a random word from the list of all words returned by the search
                         let resultNum = Int(arc4random_uniform(UInt32(results.count)))
@@ -59,7 +63,7 @@ class Dictionary {
                             continue
                         }
                         
-                        if smart && (numLetters % 2 == letter.characters.count % 2) && tries < results.count {
+                        if smart && (numLetters % 2 == letter.characters.count % 2) && tries < numResults {
                             continue
                         }
                         
