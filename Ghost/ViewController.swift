@@ -23,6 +23,9 @@ class ViewController: UIViewController {
     var computerLetterNumber = 0
     var userStarts = true
     
+    //MARK: Smart Mode
+    var smart: Bool = false
+    
     //MARK: Static Variables
     //will be modified by the dictionary
     static var nextText: String = ""
@@ -68,6 +71,10 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func smartSelected(_ sender: UISegmentedControl) {
+        smart = sender.selectedSegmentIndex != 0
+    }
+    
     @IBAction func alphabetPressed(_ sender: UIButton) {
         if self.label.text!.contains(" ") {
             self.label.text = ""
@@ -76,7 +83,7 @@ class ViewController: UIViewController {
             alphabetRunning = true
             self.label.text! += sender.currentTitle!
             giveUp.isHidden = false
-            if dictionary.searchOED(word: self.label.text!) {
+            if dictionary.searchOED(word: self.label.text!, smart: self.smart, numLetters: self.label.text!.characters.count) {
                 if ViewController.nextText != "0" {
                     self.label.text! += ViewController.nextText
                 } else {

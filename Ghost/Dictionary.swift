@@ -16,7 +16,7 @@ class Dictionary {
     let language = "en"
     let alphabetList: [String] = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     
-    func searchOED(word: String) -> Bool {
+    func searchOED(word: String, smart: Bool, numLetters: Int) -> Bool {
         //MARK: Set up HTTP request
         let word_id = word.lowercased() //word id is case sensitive and lowercase is required
         let url = URL(string: "https://od-api.oxforddictionaries.com/api/v1/search/\(language)?q=\(word_id)&prefix=true")!
@@ -56,6 +56,10 @@ class Dictionary {
                         //if the found word is shorter than the already existing word, then don't use it
                         //also if it's a proper noun, then don't use it
                         if letter.characters.count <= numberOfLetters || letter.lowercased() != letter || letter.contains("-") || letter.contains(" ") || letter.contains(".") {
+                            continue
+                        }
+                        
+                        if smart && (numLetters % 2 == letter.characters.count % 2) && tries < results.count {
                             continue
                         }
                         
