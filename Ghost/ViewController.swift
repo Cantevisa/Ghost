@@ -130,11 +130,11 @@ class ViewController: UIViewController {
             if user {
                 userScore[userLetterNumber].isHidden = false
                 userLetterNumber += 1
-                userStarts = false
+                userStarts = true
             } else {
                 computerScore[computerLetterNumber].isHidden = false
                 computerLetterNumber += 1
-                userStarts = true
+                userStarts = false
             }
         }
     }
