@@ -15,6 +15,7 @@
 		4731E0E01EC9158F004717FD /* GhostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4731E0DF1EC9158F004717FD /* GhostTests.swift */; };
 		4731E0EB1EC9158F004717FD /* GhostUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4731E0EA1EC9158F004717FD /* GhostUITests.swift */; };
 		4744D0B81ECD22980014AB9B /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4744D0B71ECD22980014AB9B /* Dictionary.swift */; };
+		47ADCF571ECF569F003EC46E /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ADCF561ECF569F003EC46E /* InstructionsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		4731E0EA1EC9158F004717FD /* GhostUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostUITests.swift; sourceTree = "<group>"; };
 		4731E0EC1EC9158F004717FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4744D0B71ECD22980014AB9B /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		47ADCF561ECF569F003EC46E /* InstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				4731E0CA1EC9158F004717FD /* AppDelegate.swift */,
 				4731E0CC1EC9158F004717FD /* ViewController.swift */,
+				47ADCF561ECF569F003EC46E /* InstructionsViewController.swift */,
 				4744D0B71ECD22980014AB9B /* Dictionary.swift */,
 				4731E0CE1EC9158F004717FD /* Main.storyboard */,
 				4731E0D11EC9158F004717FD /* Assets.xcassets */,
@@ -267,6 +270,7 @@
 			files = (
 				4731E0CD1EC9158F004717FD /* ViewController.swift in Sources */,
 				4731E0CB1EC9158F004717FD /* AppDelegate.swift in Sources */,
+				47ADCF571ECF569F003EC46E /* InstructionsViewController.swift in Sources */,
 				4744D0B81ECD22980014AB9B /* Dictionary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

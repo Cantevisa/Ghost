@@ -518,10 +518,10 @@
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
         </scene>
-        <!--View Controller-->
+        <!--Instructions View Controller-->
         <scene sceneID="OXN-IY-UEc">
             <objects>
-                <viewController id="vPf-ra-c0y" sceneMemberID="viewController">
+                <viewController id="vPf-ra-c0y" customClass="InstructionsViewController" customModule="Ghost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="glO-Kd-hVr"/>
                         <viewControllerLayoutGuide type="bottom" id="n0E-pd-SEe"/>
@@ -531,61 +531,71 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIM-Kk-Btd">
-                                <rect key="frame" x="72" y="130" width="233" height="49"/>
+                                <rect key="frame" x="72" y="95" width="233" height="49"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="41"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start with a letter." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VqR-ya-8zp">
-                                <rect key="frame" x="19" y="208" width="136" height="21"/>
+                                <rect key="frame" x="19" y="173" width="136" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The computer will add another letter." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ljR-Zm-UfR">
-                                <rect key="frame" x="19" y="239" width="282" height="21"/>
+                                <rect key="frame" x="19" y="204" width="282" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Continue alternating adding letters until a word is formed." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7d1-Fs-F3O">
-                                <rect key="frame" x="19" y="270" width="337.5" height="41"/>
+                                <rect key="frame" x="19" y="235" width="337.5" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note: Dumb mode doesn't care if it wins, smart mode does." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZI-FD-cyL">
-                                <rect key="frame" x="17" y="496" width="338" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.78775380710659904" green="0.014748099825768248" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Whoever adds the last letter wins the round." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K4X-jZ-egL">
-                                <rect key="frame" x="19" y="321" width="338" height="21"/>
+                                <rect key="frame" x="19" y="286" width="338" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Whoever loses the round gets a letter of the word GHOST." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwP-VX-SAo">
-                                <rect key="frame" x="19" y="352" width="338" height="41"/>
+                                <rect key="frame" x="19" y="317" width="338" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When someone reaches a full GHOST, they lose the game." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5OZ-f2-BvD">
-                                <rect key="frame" x="19" y="403" width="338" height="41"/>
+                                <rect key="frame" x="19" y="368" width="338" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l54-U5-KxZ">
+                                <rect key="frame" x="165.5" y="536" width="45" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="goBack:" destination="vPf-ra-c0y" eventType="touchUpInside" id="wak-IW-sVb"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note: Dumb mode doesn't care if it wins, smart mode does." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZI-FD-cyL">
+                                <rect key="frame" x="19" y="442" width="338" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.78775380710659904" green="0.014748099825768248" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="l54-U5-KxZ" firstAttribute="top" secondItem="CZI-FD-cyL" secondAttribute="bottom" constant="53" id="1Ca-PD-pgl"/>
                             <constraint firstItem="SIM-Kk-Btd" firstAttribute="centerX" secondItem="LIw-8h-7eG" secondAttribute="centerX" constant="1" id="4q6-2b-KFI"/>
                             <constraint firstItem="CZI-FD-cyL" firstAttribute="width" secondItem="5OZ-f2-BvD" secondAttribute="width" id="I8B-Mo-iPE"/>
                             <constraint firstItem="5OZ-f2-BvD" firstAttribute="width" secondItem="pwP-VX-SAo" secondAttribute="width" id="JnZ-Q1-Q9d"/>
                             <constraint firstItem="K4X-jZ-egL" firstAttribute="top" secondItem="7d1-Fs-F3O" secondAttribute="bottom" constant="10" id="Kvn-Sf-Zia"/>
                             <constraint firstItem="pwP-VX-SAo" firstAttribute="top" secondItem="K4X-jZ-egL" secondAttribute="bottom" constant="10" id="QMZ-Ef-h8K"/>
+                            <constraint firstItem="l54-U5-KxZ" firstAttribute="centerX" secondItem="LIw-8h-7eG" secondAttribute="centerX" id="Qq7-a5-iPm"/>
                             <constraint firstItem="pwP-VX-SAo" firstAttribute="leading" secondItem="K4X-jZ-egL" secondAttribute="leading" id="TCl-UL-R8i"/>
                             <constraint firstItem="K4X-jZ-egL" firstAttribute="width" secondItem="7d1-Fs-F3O" secondAttribute="width" id="TWi-77-LhI"/>
                             <constraint firstItem="ljR-Zm-UfR" firstAttribute="leading" secondItem="VqR-ya-8zp" secondAttribute="leading" id="UeP-E4-2j6"/>
@@ -596,11 +606,11 @@
                             <constraint firstItem="5OZ-f2-BvD" firstAttribute="leading" secondItem="pwP-VX-SAo" secondAttribute="leading" id="lHw-xF-Bec"/>
                             <constraint firstItem="5OZ-f2-BvD" firstAttribute="top" secondItem="pwP-VX-SAo" secondAttribute="bottom" constant="10" id="mTb-eS-TdB"/>
                             <constraint firstItem="ljR-Zm-UfR" firstAttribute="top" secondItem="VqR-ya-8zp" secondAttribute="bottom" constant="10" id="mf0-nP-HyC"/>
-                            <constraint firstItem="SIM-Kk-Btd" firstAttribute="top" secondItem="glO-Kd-hVr" secondAttribute="bottom" constant="110" id="nFL-Yv-hC8"/>
-                            <constraint firstItem="CZI-FD-cyL" firstAttribute="top" secondItem="5OZ-f2-BvD" secondAttribute="bottom" constant="52" id="qez-8f-rtQ"/>
+                            <constraint firstItem="SIM-Kk-Btd" firstAttribute="top" secondItem="glO-Kd-hVr" secondAttribute="bottom" constant="75" id="nFL-Yv-hC8"/>
+                            <constraint firstItem="CZI-FD-cyL" firstAttribute="top" secondItem="5OZ-f2-BvD" secondAttribute="bottom" constant="33" id="qez-8f-rtQ"/>
                             <constraint firstItem="7d1-Fs-F3O" firstAttribute="top" secondItem="ljR-Zm-UfR" secondAttribute="bottom" constant="10" id="rOr-yt-ERz"/>
                             <constraint firstItem="7d1-Fs-F3O" firstAttribute="leading" secondItem="ljR-Zm-UfR" secondAttribute="leading" id="tSG-iF-SM9"/>
-                            <constraint firstItem="CZI-FD-cyL" firstAttribute="leading" secondItem="5OZ-f2-BvD" secondAttribute="leading" constant="-2" id="wK4-C0-61Y"/>
+                            <constraint firstItem="CZI-FD-cyL" firstAttribute="leading" secondItem="5OZ-f2-BvD" secondAttribute="leading" id="wK4-C0-61Y"/>
                             <constraint firstItem="VqR-ya-8zp" firstAttribute="leading" secondItem="LIw-8h-7eG" secondAttribute="leadingMargin" constant="3" id="x13-L3-dfy"/>
                         </constraints>
                     </view>
